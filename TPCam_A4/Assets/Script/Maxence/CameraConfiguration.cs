@@ -1,13 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [System.Serializable]
 public class CameraConfiguration
 {
-    Quaternion targetOrentiation;
-    Vector3 posTarget;
-
     public float pitch;
     public float yaw;
     public float roll;
@@ -17,7 +12,7 @@ public class CameraConfiguration
 
     public Quaternion GetRotation()
     {
-        targetOrentiation = Quaternion.Euler(pitch, yaw, roll);
+        Quaternion targetOrentiation = Quaternion.Euler(pitch, yaw, roll);
 
         return targetOrentiation;
     }
@@ -26,10 +21,11 @@ public class CameraConfiguration
     {
 
         Vector3 offset = Vector3.back * distance;
-        posTarget = pivot + offset;
+        Vector3 posTarget = pivot + offset;
 
         return posTarget;
     }
+
     public void DrawGizmos(Color color)
     {
         Gizmos.color = color;
